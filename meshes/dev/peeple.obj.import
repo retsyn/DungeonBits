@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/peeple.obj-2707a0d3367d661084c8444b0de0a700.mesh"
+
+[deps]
+
+files=[ "res://.import/peeple.obj-2707a0d3367d661084c8444b0de0a700.mesh" ]
+
+source_file="res://meshes/dev/peeple.obj"
+dest_files=[ "res://.import/peeple.obj-2707a0d3367d661084c8444b0de0a700.mesh", "res://.import/peeple.obj-2707a0d3367d661084c8444b0de0a700.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

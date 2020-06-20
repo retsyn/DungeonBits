@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://PieceBox.gd" type="Script" id=1]
+[ext_resource path="res://peeple.tscn" type="PackedScene" id=2]
+
+[node name="PieceBox" type="Spatial"]
+script = ExtResource( 1 )
+PEEPLE = ExtResource( 2 )

@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://images/parchment_texture.png" type="Texture" id=1]
 [ext_resource path="res://CameraRig.gd" type="Script" id=2]
+[ext_resource path="res://images/generic_grid.png" type="Texture" id=3]
+[ext_resource path="res://peeple.tscn" type="PackedScene" id=4]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -11,25 +13,39 @@ uv1_scale = Vector3( 64, 64, 1 )
 uv1_triplanar = true
 uv2_triplanar = true
 
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+params_specular_mode = 4
+albedo_texture = ExtResource( 3 )
+uv1_scale = Vector3( 256, 256, 1 )
+uv1_triplanar = true
+uv2_triplanar = true
+distance_fade_mode = 1
+distance_fade_min_distance = 30.0
+distance_fade_max_distance = 5.0
+
 [sub_resource type="PrismMesh" id=3]
 
 [node name="TableScene" type="Spatial"]
-transform = Transform( 100, 0, 0, 0, -1.62921e-05, 100, 0, -100, -1.62921e-05, 0, 0, 0 )
 
 [node name="TableGeo" type="MeshInstance" parent="."]
-transform = Transform( 18.831, 0, 0, 0, 18.831, 6.82121e-13, 0, -6.82121e-13, 18.831, 0, 0, 0 )
+transform = Transform( 20, 0, 0, 0, -3.25841e-06, 1, 0, -20, -1.62921e-07, 0, 0.1, 0 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 
+[node name="GridGeo" type="MeshInstance" parent="."]
+transform = Transform( 18.831, 0, 0, 0, -3.06796e-06, 18.831, 0, -18.831, -3.06796e-06, 0, 0.101, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 4 )
+
 [node name="CameraRig" type="Spatial" parent="."]
-transform = Transform( 0.01, 0, 0, 0, 0.01, 1.88738e-15, 0, -1.88738e-15, 0.01, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 1.88738e-13, 0, -1.88738e-13, 1, 0, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="translator" type="Spatial" parent="CameraRig"]
 transform = Transform( 1, 0, 0, 0, 1, -2.84217e-14, 0, 2.84217e-14, 1, 0, 0, 0 )
 
 [node name="gimbalY" type="Spatial" parent="CameraRig/translator"]
-transform = Transform( 1, 0, 0, 0, 1, -2.84217e-14, 0, 2.84217e-14, 1, 0, 0, 0 )
 
 [node name="gimbalX" type="Spatial" parent="CameraRig/translator/gimbalY"]
 
@@ -37,10 +53,51 @@ transform = Transform( 1, 0, 0, 0, 1, -2.84217e-14, 0, 2.84217e-14, 1, 0, 0, 0 )
 transform = Transform( 1, 0, 0, 0, 1, -2.84217e-14, 0, 2.84217e-14, 1, 0, 0, 0 )
 
 [node name="Camera" type="Camera" parent="CameraRig/translator/gimbalY/gimbalX/zoomer"]
-transform = Transform( 1, 0, 0, 0, 0.359264, -0.933236, 0, 0.933236, 0.359264, 0, -11.7561, 4.40575 )
+transform = Transform( 1, 0, 0, 0, 0.522498, 0.85264, 0, -0.85264, 0.522498, 0, 0.69868, 0.437039 )
 current = true
 
-[node name="transCompass" type="MeshInstance" parent="CameraRig/translator"]
-transform = Transform( 1, 0, 0, 0, 1, -1.63709e-13, 0, 1.63709e-13, 1, 0, 0, 0 )
+[node name="cursor" type="Spatial" parent="CameraRig/translator/gimbalY"]
+transform = Transform( 1, 0, 0, 0, 1, -1.46894e-07, 0, 1.46894e-07, 1, 0, 5.68434e-14, 2 )
+
+[node name="cursorMesh" type="MeshInstance" parent="CameraRig/translator/gimbalY/cursor"]
+transform = Transform( 0.358, 0, 0, 0, -1.62921e-07, 0.08, 0, -1, -1.30337e-08, 0, 0, 2.421 )
 mesh = SubResource( 3 )
 material/0 = null
+
+[node name="Peeple" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.102, 0 )
+
+[node name="Peeple2" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.405509, 0, -0.914091, 0, 1, 0, 0.914091, 0, -0.405509, 0.152146, 0.102, 0.203578 )
+
+[node name="Peeple3" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.201862, 0.102, -0.0779013 )
+
+[node name="Peeple4" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.986623, 0.163016, 0, 0.0116269, -0.0703693, 0.997453, 0.162601, -0.984111, -0.0713234, -0.361548, 0.125334, 0.0552523 )
+
+[node name="Peeple5" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.192613, 0.102, 0.0472015 )
+
+[node name="Peeple6" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.862637, 0, -0.505823, 0, 1, 0, 0.505823, 0, -0.862637, 0.169291, 0.102, 0.358579 )
+
+[node name="Peeple7" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.248517, 0.102, 0.21844 )
+
+[node name="TableLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.290523, -0.605209, 0.74116, -0.0297212, 0.768488, 0.639174, -0.956406, -0.207723, 0.205276, 1.63504, 2.70079, 1.66853 )
+light_color = Color( 0.847059, 0.627451, 0.415686, 1 )
+light_energy = 0.31
+light_specular = 0.62
+shadow_enabled = true
+shadow_bias = 0.64
+shadow_reverse_cull_face = true
+
+[node name="TableLight2" type="DirectionalLight" parent="."]
+transform = Transform( 0.197717, -0.977874, -0.0683452, -0.333732, -0.132706, 0.93328, -0.9217, -0.161716, -0.352586, 1.63504, 2.70079, -1.73081 )
+light_color = Color( 0.968627, 0.941176, 0.941176, 1 )
+light_specular = 0.62
+shadow_enabled = true
+shadow_bias = 0.64
+shadow_reverse_cull_face = true
