@@ -24,4 +24,22 @@ material/0 = SubResource( 1 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.0303853, 0, 0, 0, 0.0680274, 0, 0, 0, 0.0303853, 0, 0.0684799, 0 )
 shape = SubResource( 2 )
+
+[node name="LabelTrans" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15244, 0 )
+
+[node name="Label" type="Label" parent="LabelTrans"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = 2
+custom_constants/shadow_as_outline = 2
+text = "Player"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="input_event" from="." to="." method="_on_Peeple_input_event"]
